@@ -1,8 +1,8 @@
 #pragma once
 
-#include <uc_dev/os/windows/com_error.h>
+#include "com_error.h"
 
-#include <uc_dev/util/noncopyable.h>
+#include <uc/util/noncopyable.h>
 
 namespace uc
 {

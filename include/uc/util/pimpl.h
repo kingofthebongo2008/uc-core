@@ -1,6 +1,5 @@
 #pragma once
 
-#include <uc_dev/util/propagate_const.h>
 #include <memory>
 
 namespace uc
@@ -32,7 +31,8 @@ namespace uc
                 pimpl& operator=(pimpl&&);
 
                 private:
-                std::experimental::propagate_const< std::unique_ptr<t> > m;
+                //std::experimental::propagate_const< std::unique_ptr<t> > m;
+                std::unique_ptr<t> m;
             };
         }
     }
