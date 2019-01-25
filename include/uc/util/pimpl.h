@@ -31,6 +31,7 @@ namespace uc
                 pimpl& operator=(pimpl&&);
 
                 private:
+                //todo fix this
                 //std::experimental::propagate_const< std::unique_ptr<t> > m;
                 std::unique_ptr<t> m;
             };
