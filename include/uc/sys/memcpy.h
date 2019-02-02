@@ -61,9 +61,9 @@ namespace uc
 
             switch (InitialQuadwordCount)
             {
-            case 3: _mm_stream_si128(Dest + 2, _mm_load_si128(Source + 2));	 // Fall through
-            case 2: _mm_stream_si128(Dest + 1, _mm_load_si128(Source + 1));	 // Fall through
-            case 1: _mm_stream_si128(Dest + 0, _mm_load_si128(Source + 0));	 // Fall through
+            case 3: _mm_stream_si128(Dest + 2, _mm_load_si128(Source + 2));  // Fall through
+            case 2: _mm_stream_si128(Dest + 1, _mm_load_si128(Source + 1));  // Fall through
+            case 1: _mm_stream_si128(Dest + 0, _mm_load_si128(Source + 0));  // Fall through
             default:
                 break;
             }
@@ -80,16 +80,16 @@ namespace uc
             switch (CacheLines)
             {
             default:
-            case 10: _mm_prefetch((char*)(Source + 36), _MM_HINT_NTA);	// Fall through
-            case 9:  _mm_prefetch((char*)(Source + 32), _MM_HINT_NTA);	// Fall through
-            case 8:  _mm_prefetch((char*)(Source + 28), _MM_HINT_NTA);	// Fall through
-            case 7:  _mm_prefetch((char*)(Source + 24), _MM_HINT_NTA);	// Fall through
-            case 6:  _mm_prefetch((char*)(Source + 20), _MM_HINT_NTA);	// Fall through
-            case 5:  _mm_prefetch((char*)(Source + 16), _MM_HINT_NTA);	// Fall through
-            case 4:  _mm_prefetch((char*)(Source + 12), _MM_HINT_NTA);	// Fall through
-            case 3:  _mm_prefetch((char*)(Source + 8), _MM_HINT_NTA);	// Fall through
-            case 2:  _mm_prefetch((char*)(Source + 4), _MM_HINT_NTA);	// Fall through
-            case 1:  _mm_prefetch((char*)(Source + 0), _MM_HINT_NTA);	// Fall through
+            case 10: _mm_prefetch((char*)(Source + 36), _MM_HINT_NTA);  // Fall through
+            case 9:  _mm_prefetch((char*)(Source + 32), _MM_HINT_NTA);  // Fall through
+            case 8:  _mm_prefetch((char*)(Source + 28), _MM_HINT_NTA);  // Fall through
+            case 7:  _mm_prefetch((char*)(Source + 24), _MM_HINT_NTA);  // Fall through
+            case 6:  _mm_prefetch((char*)(Source + 20), _MM_HINT_NTA);  // Fall through
+            case 5:  _mm_prefetch((char*)(Source + 16), _MM_HINT_NTA);  // Fall through
+            case 4:  _mm_prefetch((char*)(Source + 12), _MM_HINT_NTA);  // Fall through
+            case 3:  _mm_prefetch((char*)(Source + 8), _MM_HINT_NTA);   // Fall through
+            case 2:  _mm_prefetch((char*)(Source + 4), _MM_HINT_NTA);   // Fall through
+            case 1:  _mm_prefetch((char*)(Source + 0), _MM_HINT_NTA);   // Fall through
 
                                                                         // Do four quadwords per loop to minimize stalls.
                 for (size_t i = CacheLines; i > 0; --i)
@@ -108,16 +108,16 @@ namespace uc
                     Source += 4;
                 }
 
-            case 0:	// No whole cache lines to read
+            case 0: // No whole cache lines to read
                 break;
             }
 
             // Copy the remaining quadwords
             switch (quad_word_count & 3)
             {
-            case 3: _mm_stream_si128(Dest + 2, _mm_load_si128(Source + 2));	 // Fall through
-            case 2: _mm_stream_si128(Dest + 1, _mm_load_si128(Source + 1));	 // Fall through
-            case 1: _mm_stream_si128(Dest + 0, _mm_load_si128(Source + 0));	 // Fall through
+            case 3: _mm_stream_si128(Dest + 2, _mm_load_si128(Source + 2));  // Fall through
+            case 2: _mm_stream_si128(Dest + 1, _mm_load_si128(Source + 1));  // Fall through
+            case 1: _mm_stream_si128(Dest + 0, _mm_load_si128(Source + 0));  // Fall through
             default:
                 break;
             }
@@ -143,7 +143,7 @@ namespace uc
 
             switch (InitialQuadwordCount)
             {
-            case 1: _mm256_stream_si256(Dest + 0, _mm256_load_si256(Source + 0));	 // Fall through
+            case 1: _mm256_stream_si256(Dest + 0, _mm256_load_si256(Source + 0));    // Fall through
             default:
                 break;
             }
@@ -160,16 +160,16 @@ namespace uc
             switch (CacheLines)
             {
             default:
-            case 10: _mm_prefetch((char*)(Source + 36), _MM_HINT_NTA);	// Fall through
-            case 9:  _mm_prefetch((char*)(Source + 32), _MM_HINT_NTA);	// Fall through
-            case 8:  _mm_prefetch((char*)(Source + 28), _MM_HINT_NTA);	// Fall through
-            case 7:  _mm_prefetch((char*)(Source + 24), _MM_HINT_NTA);	// Fall through
-            case 6:  _mm_prefetch((char*)(Source + 20), _MM_HINT_NTA);	// Fall through
-            case 5:  _mm_prefetch((char*)(Source + 16), _MM_HINT_NTA);	// Fall through
-            case 4:  _mm_prefetch((char*)(Source + 12), _MM_HINT_NTA);	// Fall through
-            case 3:  _mm_prefetch((char*)(Source + 8), _MM_HINT_NTA);	// Fall through
-            case 2:  _mm_prefetch((char*)(Source + 4), _MM_HINT_NTA);	// Fall through
-            case 1:  _mm_prefetch((char*)(Source + 0), _MM_HINT_NTA);	// Fall through
+            case 10: _mm_prefetch((char*)(Source + 36), _MM_HINT_NTA);  // Fall through
+            case 9:  _mm_prefetch((char*)(Source + 32), _MM_HINT_NTA);  // Fall through
+            case 8:  _mm_prefetch((char*)(Source + 28), _MM_HINT_NTA);  // Fall through
+            case 7:  _mm_prefetch((char*)(Source + 24), _MM_HINT_NTA);  // Fall through
+            case 6:  _mm_prefetch((char*)(Source + 20), _MM_HINT_NTA);  // Fall through
+            case 5:  _mm_prefetch((char*)(Source + 16), _MM_HINT_NTA);  // Fall through
+            case 4:  _mm_prefetch((char*)(Source + 12), _MM_HINT_NTA);  // Fall through
+            case 3:  _mm_prefetch((char*)(Source + 8), _MM_HINT_NTA);   // Fall through
+            case 2:  _mm_prefetch((char*)(Source + 4), _MM_HINT_NTA);   // Fall through
+            case 1:  _mm_prefetch((char*)(Source + 0), _MM_HINT_NTA);   // Fall through
 
                                                                         // Do four quadwords per loop to minimize stalls.
                 for (size_t i = CacheLines; i > 0; --i)
@@ -186,14 +186,14 @@ namespace uc
                     Source += 2;
                 }
 
-            case 0:	// No whole cache lines to read
+            case 0: // No whole cache lines to read
                 break;
             }
 
             // Copy the remaining quadwords
             switch (double_quad_word_count & 1)
             {
-            case 1: _mm256_stream_si256(Dest + 0, _mm256_load_si256(Source + 0));	 // Fall through
+            case 1: _mm256_stream_si256(Dest + 0, _mm256_load_si256(Source + 0));    // Fall through
             default:
                 break;
             }
@@ -210,9 +210,9 @@ namespace uc
 
             switch (((size_t)Dest >> 4) & 3)
             {
-                case 1: _mm_stream_si128(Dest++, Source); --NumQuadwords;	 // Fall through
-                case 2: _mm_stream_si128(Dest++, Source); --NumQuadwords;	 // Fall through
-                case 3: _mm_stream_si128(Dest++, Source); --NumQuadwords;	 // Fall through
+                case 1: _mm_stream_si128(Dest++, Source); --NumQuadwords;    // Fall through
+                case 2: _mm_stream_si128(Dest++, Source); --NumQuadwords;    // Fall through
+                case 3: _mm_stream_si128(Dest++, Source); --NumQuadwords;    // Fall through
                 default:
                 break;
             }
@@ -231,9 +231,9 @@ namespace uc
             // Copy the remaining quadwords
             switch (NumQuadwords & 3)
             {
-                case 3: _mm_stream_si128(Dest++, Source);	 // Fall through
-                case 2: _mm_stream_si128(Dest++, Source);	 // Fall through
-                case 1: _mm_stream_si128(Dest++, Source);	 // Fall through
+                case 3: _mm_stream_si128(Dest++, Source);    // Fall through
+                case 2: _mm_stream_si128(Dest++, Source);    // Fall through
+                case 1: _mm_stream_si128(Dest++, Source);    // Fall through
                 default:
                 break;
             }
@@ -243,29 +243,11 @@ namespace uc
 
         inline bool is_avx_supported()
         {
-            return false;
+            return true;
         }
 
         inline void memcpy(void* __restrict destination, const void* __restrict source, uint32_t bytes_to_copy )
         {
-            
-
-            /*
-            #define OSXSAVEFlag (1UL<<27)
-            #define AVXFlag     ((1UL<<28)|OSXSAVEFlag)
-            #define FMAFlag     ((1UL<<12)|AVXFlag|OSXSAVEFlag)
-            #define CLMULFlag   ((1UL<< 1)|AVXFlag|OSXSAVEFlag)
-            #define VAESFlag    ((1UL<<25)|AVXFlag|OSXSAVEFlag)
-            inline bool SimdDetectFeature(U32 idFeature)
-            {
-                    int EAX, EBX, ECX, EDX;
-                    cpuid(0, EAX, EBX, ECX, EDX);
-                    if ((ECX & idFeature) != idFeature)
-                        return false;
-                    return true;
-            }
-            */
-
             //todo: x86
             if ( is_aligned<32>(source) && is_aligned<32>(destination) && is_aligned<32>( bytes_to_copy) && is_avx_supported() )
             {
@@ -284,10 +266,10 @@ namespace uc
             }
         }
 
-		inline void memcpy(void* __restrict destination, const void* __restrict source, uint64_t bytes_to_copy)
-		{
-			assert(bytes_to_copy < 0xFFFFFFFF);
-			memcpy(destination, source, static_cast<uint32_t>(bytes_to_copy));
-		}
+        inline void memcpy(void* __restrict destination, const void* __restrict source, uint64_t bytes_to_copy)
+        {
+            assert(bytes_to_copy < 0xFFFFFFFF);
+            memcpy(destination, source, static_cast<uint32_t>(bytes_to_copy));
+        }
     }
 }
