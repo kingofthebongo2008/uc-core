@@ -43,20 +43,20 @@ namespace uc
             return size + (alignment - 1)  & ~(alignment - 1);
         }
 
-		inline uint32_t align(uint32_t size, uint32_t alignment) throw()
-		{
-			return size + (alignment - 1)  & ~(alignment - 1);
-		}
+        inline uint32_t align(uint32_t size, uint32_t alignment) throw()
+        {
+            return size + (alignment - 1)  & ~(alignment - 1);
+        }
 
         inline bool is_aligned(uint32_t size, uint32_t alignment) throw()
         {
             return (size & (alignment - 1)) == 0;
         }
 
-		inline bool is_aligned(uint64_t size, uint64_t alignment) throw()
-		{
-			return (size & (alignment - 1)) == 0;
-		}
+        inline bool is_aligned(uint64_t size, uint64_t alignment) throw()
+        {
+            return (size & (alignment - 1)) == 0;
+        }
 
         inline bool is_aligned(const void* pointer, size_t alignment) throw()
         {
@@ -138,7 +138,7 @@ namespace uc
                 else
                 {
                     std::size_t size_allocation = std::max(size, sizeof(free_object));
-                    return m_super_heap->allocate(size_allocation, alignment);
+                    return m_super_heap->allocate(size_allocation, 32);
                 }
             }
 
@@ -156,8 +156,8 @@ namespace uc
                 free_list_heap* m_next;
             };
 
-            super_heap*		m_superHeap;
-            free_object*	m_list;
+            super_heap*     m_super_heap;
+            free_object*    m_list;
 
             inline void internal_free(void* pointer) throw()
             {
