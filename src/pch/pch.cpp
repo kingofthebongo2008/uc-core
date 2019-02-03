@@ -13,4 +13,7 @@
 #include <uc/util/pimpl_impl.h>
 #include <uc/util/utf8_conv.h>
 
+#include <uc/mem/intrusive_ptr.h>
+#include <uc/mem/ref_counter.h>
+
 
